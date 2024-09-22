@@ -76,7 +76,10 @@ int isBalanced(char *c){
 }
 
 int main(){
-    char c[] = "[{()}]";
+      char c[MAXSIZE];
+    printf("Enter a string of parentheses: ");
+    scanf("%s", c); 
+    
     if(isBalanced(c)){
         printf("the given string contains balanced parantheses.\n");
     }
