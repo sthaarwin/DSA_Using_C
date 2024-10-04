@@ -18,7 +18,7 @@ void traverse(struct node* head){
         printf("%d -> ", head->data);
         head= head->next;
     }
-    printf("\nnull.\n");
+    printf("null\n");
 }
 
 int main(){
