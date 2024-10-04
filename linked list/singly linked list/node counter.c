@@ -175,7 +175,7 @@ int main() {
         }
 
         if (Continue) {
-            printf("Do you want to continue? (1 for Yes, 0 for No): ");
+            printf("Do you want to continue? (1 for Yes): ");
             scanf("%d", &Continue);
         }
     }
