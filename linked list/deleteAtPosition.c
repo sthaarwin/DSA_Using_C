@@ -47,6 +47,11 @@ void deleteAtPosition(struct node **head, int position)
         temp = temp->next;
     }
 
+    if(temp == NULL || temp->next == NULL){
+        printf("out of bounds.\n");
+        return;
+    }
+
     struct node *nodeToDelete = temp->next;
     temp->next = nodeToDelete->next;
 }
