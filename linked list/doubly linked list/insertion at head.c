@@ -13,6 +13,7 @@ void insert(int value){
     struct node* temp = (struct node*)malloc(sizeof(struct node));
     temp -> data = value;
     temp -> next = NULL;
+    temp -> prev = NULL;
 
     if(head == NULL){
         head = temp;
