@@ -1,8 +1,8 @@
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdlib.h>
 #define MAXSIZE 10
 
-typedef struct stack
+typedef struct 
 {
     int top;
     int item[MAXSIZE];
@@ -12,11 +12,11 @@ void initStack(stack *s){
     s-> top = -1;
 }
 
-bool isEmpty(stack *s){
+int isEmpty(stack *s){
     return (s->top<0);
 }
 
-bool isFull(stack *s){
+int isFull(stack *s){
     return (s->top>=MAXSIZE-1);
 }
 
