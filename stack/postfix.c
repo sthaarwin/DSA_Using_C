@@ -4,7 +4,7 @@
 int stack[MAXSIZE];
 int top = -1;
 
-int isDigitCustom(char c)
+int isDigit(char c)
 {
     return (c >= '0' && c <= '9');
 }
@@ -29,7 +29,7 @@ int evaluatePostfix(char *exp)
     int i = 0;
     while (exp[i] != '\0')
     {
-        if (isDigitCustom(exp[i]))
+        if (isDigit(exp[i]))
         {
             push(exp[i]-'0');
         }
