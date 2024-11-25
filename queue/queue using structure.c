@@ -79,7 +79,7 @@ int main()
     enqueue(&q, 3);
     enqueue(&q, 7);
     display(&q);
-    dequeue(&q);
+    dequeue(&q);          
     display(&q);
 
     return 0;
