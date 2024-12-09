@@ -1,81 +1,99 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define MAX_SIZE 10
-typedef struct{
+typedef struct
+{
     int data;
     int priority;
-}Element;
+} Element;
 
-typedef struct{
+typedef struct
+{
     Element elements[MAX_SIZE];
     int size;
-}PriorityQueue;
+} PriorityQueue;
 
-void initQueue(PriorityQueue *pq){
+void initQueue(PriorityQueue *pq)
+{
     pq->size = 0;
 }
 
-int isEmpty(PriorityQueue *pq){
+int isEmpty(PriorityQueue *pq)
+{
     return pq->size == 0;
 }
 
-int isFull(PriorityQueue *pq){
+int isFull(PriorityQueue *pq)
+{
     return pq->size == MAX_SIZE;
 }
 
- void enqueue(PriorityQueue *pq, int value, int priority){
+void enqueue(PriorityQueue *pq, int value, int priority)
+{
     Element temp;
     temp.data = value;
     temp.priority = priority;
-    
-    if(isEmpty(pq)){
+
+    if (isEmpty(pq))
+    {
         pq->elements[0] = temp;
-        pq -> size ++;
+        pq->size++;
         return;
     }
 
-    if (isFull(pq)){
+    if (isFull(pq))
+    {
         printf("Queue is full.\n");
         return;
     }
 
     int i;
-    for(i = pq->size - 1; i >= 0; i--) {
-        if(priority < pq->elements[i].priority) {
+    for (i = pq->size - 1; i >= 0; i--)
+    {
+        if (priority < pq->elements[i].priority)
+        {
             pq->elements[i + 1] = pq->elements[i];
-        } else {
+        }
+        else
+        {
             break;
         }
     }
     pq->elements[i + 1] = temp;
-    pq ->size++;
- }
+    pq->size++;
+}
 
-void display(PriorityQueue pq){
+int dequeue(PriorityQueue *pq)
+{
+    if (isEmpty(pq))
+    {
+        printf("Queue is empty.\n");
+        exit(0);
+    }
+    int value = pq->elements[0].data;
+    int i;
+    for (i = 1; i < pq->size - 1; i++)
+    {
+        pq->elements[i - 1] = pq->elements[i];
+    }
+    pq->size--;
+    return value;
+}
+
+void display(PriorityQueue pq)
+{
     int i = 0;
-    while(i < pq.size){
+    while (i < pq.size)
+    {
         printf("%d priority (%d) -> ", pq.elements[i].data, pq.elements[i].priority);
         i++;
     }
     printf("null\n");
 }
 
-int dequeue(PriorityQueue *pq) {
-    if (isEmpty(pq)) {
-        printf("Queue is empty.\n");
-        exit(0);
-    }
-    int value = pq->elements[0].data;
-    int i;
-    for ( i = 0; i < pq->size - 1; i++) {
-        pq->elements[i] = pq->elements[i + 1];
-    }
-    pq->size--;
-    return value;
-}
-
-int main() {
+int main()
+{
     PriorityQueue pq;
     initQueue(&pq);
     enqueue(&pq, 5, 1);
@@ -85,6 +103,9 @@ int main() {
     printf("Dequeued: %d\n", dequeue(&pq));
     display(pq);
     printf("Dequeued: %d\n", dequeue(&pq));
+    display(pq);
+    enqueue(&pq, 3, 5);
+    enqueue(&pq, 3, 2);
     display(pq);
     return 0;
 }
